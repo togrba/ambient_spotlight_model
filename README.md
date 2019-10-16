@@ -11,4 +11,4 @@ A primitive version of the code can be found at www.tovebang.com. Primitive beca
 1. Download Processing from [here](https://processing.org/download/).
 2. Open the Processing sketch ambient_spotlight_model.pde in Processing
 3. Put on your headphones
-4. In Processing, go to Sketch and click *Present*
+4. In Processing, go to *Sketch* and click *Present*
