@@ -12,3 +12,4 @@ A primitive version of the code can be found at www.tovebang.com. Primitive beca
 2. Open the Processing sketch ambient_spotlight_model.pde in Processing
 3. Put on your headphones
 4. In Processing, go to *Sketch* and click *Present*
+5. (optional) If you wish to change the audio file, add your file to the same folder as the .pde file and change the file name in this variable: `file = new SoundFile(this, "ThetaMeditation-Enh.mp3");`
