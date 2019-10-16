@@ -25,7 +25,6 @@ void setup() {
     size(1280, 720, P3D);
     noStroke();
     colorMode(RGB, 255, 0, 1); 
-    //colorMode(HSB, 240, 100, 100);
     fill(0);
     file = new SoundFile(this, "your_file.mp3");  // audio file
     file.play();
