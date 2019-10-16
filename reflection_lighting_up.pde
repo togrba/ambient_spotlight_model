@@ -1,11 +1,11 @@
 /*
 based on sources:
 https://processing.org/examples/reflection.html
+https://www.openprocessing.org/sketch/748916
 https://github.com/dhchoi/processing-countdowntimer
 
 TODO:
- - Add color variations
- - Fix sound library on web
+ - Add color variations with shaders - GLSL
  - Add shape shifting
 */
   
@@ -20,8 +20,8 @@ float s;
 
 // adjust variables
 final long time_in_middle = 5000; // set wait time in middle in ms
-final int size_width = 1280;  // set screen width - OBS change setup size too
-final int size_height = 720;  // set screen height - OBS change setup size too
+final int size_width = 1280;  // set screen width - OBS change setup size too  1440 fullscreen
+final int size_height = 720;  // set screen height - OBS change setup size too  900 fullscreen
 final float sphere_size = 200;
 
 
@@ -29,10 +29,12 @@ final float sphere_size = 200;
 void setup() {
     size(1280, 720, P3D); // size(640, 360, P3D)  // size(1280, 720, P3D)
     noStroke();
-    colorMode(RGB, 255, 0, 1);    // COLOR DETERMINED HERE
+    colorMode(RGB, 255, 0, 1); 
+    //colorMode(HSB, 240, 100, 100);
     fill(0);
-    file = new SoundFile(this, "ThetaMeditation-Beat-Forest.mp3");  // audio file
+    file = new SoundFile(this, "ThetaMeditation-Beat-Transcend.mp3");  // audio file
     file.play();
+    file.loop();
     // create and start a timer that has been configured to trigger onTickEvents every second (100 ms) and run for x ms, set by variable time_in_middle
     timer = CountdownTimerService.getNewCountdownTimer(this).configure(100, time_in_middle).start();
 }
@@ -42,7 +44,6 @@ void draw() {
   float max_dist = sqrt(pow((size_height)/2, 2)+pow((size_width)/2, 2));
   float s = ((dist(mouseX, mouseY, width/2, height/2)/max_dist)-1)*-1;    // when outside of the sphere
   translate(width / 2, height / 2);         // Sphere position
-  color c = getColorByTheta(s, millis()/600);
   file.amp(s);
   if (s < ((sphere_size / max_dist) -1) * -1) {
     lightSpecular(2, 0, 222);                // Set the specular color of lights that follow
@@ -58,8 +59,12 @@ void draw() {
   else {        // when inside the sphere
     if (timer.getTimeLeftUntilFinish()/1000 == 0) {
       lightSpecular(2, 0, 222); 
-      fill(255*(sin(millis()/500.f)+1)/2);      // pulsing
-      //stroke(c);
+      fill(255*(sin(millis()/800.f)+1)/4);      // pulsing
+      //color c = getColorByTheta(s, millis()/100);
+      //float r = c * 255;
+      //float g = c * 0;
+      //float b = c * 1;
+      //colorMode(RGB, r, g, b);
       directionalLight(0.8, 0, 0.8, 0, 0, -1);
       specular(s, s, s);
       sphere(sphere_size);
@@ -83,11 +88,11 @@ void onFinishEvent(CountdownTimer t) {
    println("FINISHED!");
 }
 
-color getColorByTheta(float theta, float time) {
-  float th = 8.0 * theta + time * 2.0;
-  float r = 0.6 + 0.4 * cos(th), 
-    g = 0.6 + 0.4 * cos(th - PI / 3), 
-    b = 0.6 + 0.4 * cos(th - PI * 2.0 / 3.0), 
-    alpha = map(21, 0, 222, 150, 30);
-  return color(r * 255, g * 255, b * 255, alpha);
-}
+//color getColorByTheta(float theta, float time) {
+//  float th = 8.0 * theta + time * 2.0;
+//  float r = 0.6 + 0.4 * cos(th), 
+//    g = 0.6 + 0.4 * cos(th - PI / 3), 
+//    b = 0.6 + 0.4 * cos(th - PI * 2.0 / 3.0), 
+//    alpha = map(21, 0, 222, 150, 30);
+//  return color(r * 255, g * 255, b * 255, alpha);
+//}
