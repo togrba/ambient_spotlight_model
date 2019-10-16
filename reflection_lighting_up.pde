@@ -27,7 +27,7 @@ void setup() {
     colorMode(RGB, 255, 0, 1); 
     //colorMode(HSB, 240, 100, 100);
     fill(0);
-    file = new SoundFile(this, "ThetaMeditation-Beat-Waves.mp3");  // audio file
+    file = new SoundFile(this, "your_file.mp3");  // audio file
     file.play();
     file.loop();
     // create and start a timer that has been configured to trigger onTickEvents every second (100 ms) and run for x ms, set by variable time_in_middle
