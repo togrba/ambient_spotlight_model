@@ -1,6 +1,6 @@
-# ambient_spotlight_model
+# Ambient spotlight model
 
-##Intro
+## Intro
 
 An interactive prototype modelling the ambient spotlight/streetlight. Made for desktop interaction with Processing.
 
